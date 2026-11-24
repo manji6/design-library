@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>エディトリアル — sample</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="editorial.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main>
+  <div class="folio"><span>design-library / designs / editorial</span><span>sample</span></div>
+
+  <header class="masthead">
+    <h1>エディトリアル見本</h1>
+    <table class="meta">
+      <tr><th>デザイン</th><td>エディトリアル（editorial）</td><th>旧名</th><td>案A</td></tr>
+      <tr><th>用途</th><td>資料・読み物・調査レポート</td><th>正本</th><td>DESIGN.md</td></tr>
+    </table>
+  </header>
+
+  <div class="ticker"><b>見出し</b>　ティッカーは見出し級の項目がある資料だけに置く　／　面の朱は #E05729、文字の朱は #BA4F2C</div>
+
+  <nav class="toc" id="toc">
+    <a href="#c1">1 組版</a><a href="#c2">2 図解部品</a><a href="#c3">3 スタイルガイド</a>
+  </nav>
+
+  <section class="chapter" id="c1">
+    <span class="no">01</span>
+    <h2>組版</h2>
+    <p class="rv">ページは資料の地図として読める形にする。本文は短く保ち、詳細は節と表とカードに分ける。章は大きな朱の番号と罫線で組む。</p>
+    <div class="card rv">
+      <h3>ルールドカード</h3>
+      <p>1px の罫線で区切る。影と大きな角丸は使わない。</p>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><b data-count="185">185</b><span class="note">本文の行間（×100）</span><div class="bar"><i data-w="62%"></i></div></div>
+      <div class="stat"><b data-count="38">38</b><span class="note">行長の上限（em）</span><div class="bar"><i data-w="38%"></i></div></div>
+      <div class="stat"><b data-count="5">5</b><span class="note">余白段階の数</span><div class="bar"><i data-w="20%"></i></div></div>
+    </div>
+    <p class="note">出典: DESIGN.md（このデザインの正本）</p>
+  </section>
+
+  <section class="chapter" id="c2">
+    <span class="no">02</span>
+    <h2>図解部品</h2>
+    <p class="rv">図解パターンの役割を、このデザインの部品で描いた例（状態遷移）。</p>
+    <div class="dg rv">
+      <span class="actor">生活者</span>
+      <div class="state">疑問を持つ</div>
+      <span class="arrow">→</span>
+      <div class="state">AIに質問する</div>
+      <span class="arrow">→</span>
+      <div class="state emph">態度変容<small>ここが要点</small></div>
+      <span class="arrow">→</span>
+      <div class="state">サイトに着地</div>
+      <span class="callout">注釈: 回答の中で比較と推薦が済んでしまう</span>
+    </div>
+  </section>
+
+  <section class="chapter" id="c3">
+    <span class="no">03</span>
+    <h2>スタイルガイド</h2>
+    <div class="card rv"><h3>色</h3>
+      <p>地 #FEFEFD ／ 面の朱 #E05729 ／ 文字の朱 #BA4F2C ／ 本文 #1C1A17 ／ 補助 #6E6A64（注釈とメタ情報のみ）</p></div>
+    <div class="card rv"><h3>タイポ</h3>
+      <p style="font-size:30px;font-weight:900;line-height:1.4">見出し大 30px / 900</p>
+      <p>本文 16px、行間 1.85、字間 0.02em。見出しは palt 有効。</p>
+      <p class="note">注釈 13px、補助色。</p></div>
+  </section>
+</main>
+<script>
+document.documentElement.classList.add('js');
+const bar = document.getElementById('progress');
+addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+  bar.style.transform = `scaleX(${p})`;
+}, { passive: true });
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('b[data-count]').forEach(b => {
+    const end = +b.dataset.count, t0 = performance.now();
+    const tick = t => { const k = Math.min(1, (t - t0) / 800); b.textContent = Math.round(end * k); if (k < 1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  });
+  e.target.querySelectorAll('.bar i').forEach(i => i.style.width = i.dataset.w);
+  io.unobserve(e.target);
+}), { threshold: 0.2 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) {
+    document.querySelectorAll('.toc a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  }
+}), { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('.chapter').forEach(el => spy.observe(el));
+</script>
+</body>
+</html>

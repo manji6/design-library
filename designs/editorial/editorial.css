@@ -1,0 +1,95 @@
+/* editorial.css — エディトリアルの部品・組版・動き・印刷の実装。
+   色と寸法は tokens.css の変数だけを使う。 */
+@import url('https://fonts.googleapis.com/css2?family=Murecho:wght@400;500;700;900&display=swap');
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--colors-paper);
+  color: var(--colors-ink);
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-line-height);
+  letter-spacing: var(--typography-body-letter-spacing);
+}
+main { max-width: 880px; margin: 0 auto; padding: 0 var(--spacing-s3) var(--spacing-s5); }
+p { max-width: var(--typography-line-length); }
+a { color: var(--colors-key-text); }
+h1, h2, h3 { line-height: var(--typography-heading-line-height); font-feature-settings: "palt"; }
+small, .note { font-size: var(--typography-size-note); color: var(--colors-sub); }
+
+/* 読書進捗バー */
+.progress { position: fixed; inset: 0 auto auto 0; height: 3px; width: 100%;
+  background: var(--colors-key); transform-origin: 0 50%; transform: scaleX(0); z-index: 10; }
+
+/* フォリオ帯とマストヘッド */
+.folio { display: flex; justify-content: space-between; border-bottom: var(--border-width) solid var(--colors-ink);
+  padding: var(--spacing-s2) 0; font-size: var(--typography-size-note); color: var(--colors-sub); }
+.masthead h1 { font-size: var(--typography-size-display); font-weight: 900; margin: var(--spacing-s3) 0 var(--spacing-s2); }
+.meta { border-collapse: collapse; margin: var(--spacing-s2) 0 var(--spacing-s4); }
+.meta th, .meta td { border: var(--border-width) solid var(--colors-hairline);
+  padding: var(--spacing-s1) var(--spacing-s2); text-align: left; font-size: var(--typography-size-note); }
+.meta th { color: var(--colors-sub); font-weight: 500; }
+
+/* ティッカー */
+.ticker { background: var(--colors-ticker); color: var(--colors-ticker-on);
+  padding: var(--spacing-s1) var(--spacing-s2); overflow: hidden; white-space: nowrap; }
+.ticker b { color: var(--colors-key); font-weight: 700; }
+
+/* 目次 */
+.toc { position: sticky; top: 0; background: var(--colors-paper);
+  border-bottom: var(--border-width) solid var(--colors-hairline); padding: var(--spacing-s1) 0; z-index: 5; }
+.toc a { margin-right: var(--spacing-s2); text-decoration: none; color: var(--colors-sub); }
+.toc a.active { color: var(--colors-key-text); font-weight: 700; }
+
+/* 章 */
+.chapter { margin-top: var(--spacing-s5); }
+.chapter .no { font-size: 64px; font-weight: 900; color: var(--colors-key); line-height: 1; display: block; }
+.chapter h2 { font-size: var(--typography-size-h2); font-weight: 900; margin: var(--spacing-s1) 0 var(--spacing-s3);
+  border-bottom: 2px solid var(--colors-ink); padding-bottom: var(--spacing-s1); }
+.chapter h3 { font-size: var(--typography-size-h3); font-weight: 700; }
+
+/* ルールドカード */
+.card { border: var(--border-width) solid var(--colors-hairline); padding: var(--spacing-s3); margin: var(--spacing-s2) 0; }
+.card h3 { margin-top: 0; }
+
+/* 統計 */
+.stats { display: flex; gap: var(--spacing-s3); flex-wrap: wrap; }
+.stat b { font-size: var(--typography-size-h2); font-weight: 900; font-variant-numeric: tabular-nums; display: block; }
+.bar { height: 6px; background: var(--colors-hairline); margin-top: var(--spacing-s1); }
+.bar i { display: block; height: 100%; background: var(--colors-key); width: 0; transition: width 1s ease; }
+
+/* 出現アニメーション（初期表示では見えている。JS が付いた時だけ使う） */
+.rv { opacity: 1; }
+.js .rv { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+.js .rv.in { opacity: 1; transform: none; }
+
+/* 図解部品 */
+.dg { display: flex; align-items: stretch; gap: var(--spacing-s2); flex-wrap: wrap; margin: var(--spacing-s3) 0; }
+.dg .actor { font-weight: 700; align-self: center; }
+.dg .state { border: var(--border-width) solid var(--colors-hairline); background: var(--colors-paper);
+  padding: var(--spacing-s2); min-width: 120px; }
+.dg .state small { display: block; }
+.dg .arrow { align-self: center; color: var(--colors-ink); }
+.dg .state.emph { background: var(--colors-key); color: var(--colors-key-on); font-weight: 700; }
+.dg .state.emph small { color: var(--colors-key-on); }
+.dg .callout { border: var(--border-width) dashed var(--colors-sub); color: var(--colors-sub);
+  padding: var(--spacing-s1) var(--spacing-s2); font-size: var(--typography-size-note); align-self: center; }
+
+/* コピーボタン等 */
+button.copy { border: var(--border-width) solid var(--colors-hairline); background: var(--colors-paper);
+  color: var(--colors-key-text); padding: 2px var(--spacing-s1); cursor: pointer; font: inherit;
+  font-size: var(--typography-size-note); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  .bar i { transition: none; }
+}
+
+@media print {
+  .progress, .toc, .ticker { display: none; }
+  .js .rv { opacity: 1; transform: none; }
+  main { max-width: none; }
+}
