@@ -48,14 +48,49 @@
     <p class="rv">図解パターンの役割を、このデザインの部品で描いた例（状態遷移）。</p>
     <div class="dg rv">
       <span class="actor">生活者</span>
-      <div class="state">疑問を持つ</div>
+      <div class="state"><span class="st-title">疑問を持つ</span></div>
       <span class="arrow">→</span>
-      <div class="state">AIに質問する</div>
+      <div class="state"><span class="st-title">AIに質問する</span></div>
       <span class="arrow">→</span>
-      <div class="state emph">態度変容<small>ここが要点</small></div>
+      <div class="state emph"><span class="st-title">態度変容</span><small>ここが要点</small></div>
       <span class="arrow">→</span>
-      <div class="state">サイトに着地</div>
+      <div class="state"><span class="st-title">サイトに着地</span></div>
       <span class="callout">注釈: 回答の中で比較と推薦が済んでしまう</span>
+    </div>
+    <p class="rv">並置比較（2段）の例。強調は1段に1つまで、注釈は対象の段の下に置く。</p>
+    <div class="dg-compare rv">
+      <div class="dg-row">
+        <div class="dg-cond">従来の検索<small>検索エンジン経由</small></div>
+        <div class="dg">
+          <div class="state"><span class="st-title">検索する</span><small>キーワードを入れる</small></div>
+          <span class="arrow">→</span>
+          <div class="state"><span class="st-title">結果を比べる</span><small>複数サイトを行き来</small></div>
+          <span class="arrow">→</span>
+          <div class="state"><span class="st-title">サイトで判断</span><small>一次情報に当たる</small></div>
+        </div>
+      </div>
+      <div class="dg-row">
+        <div class="dg-cond">生成AI<small>チャットで完結</small></div>
+        <div class="dg">
+          <div class="state"><span class="st-title">質問する</span><small>自然文で聞く</small></div>
+          <span class="arrow">→</span>
+          <div class="state emph"><span class="st-title">回答で完結</span><small>比較と推薦が済む</small></div>
+          <span class="arrow">→</span>
+          <div class="state"><span class="st-title">着地は任意</span><small>必要な時だけ訪問</small></div>
+          <p class="annotation">注釈: 判断の場所がサイト側から回答側へ移る。ここが両段の分水嶺。</p>
+        </div>
+      </div>
+    </div>
+    <p class="rv">データ表の例。数値は右寄せせず、tabular-nums で桁を揃える。</p>
+    <div class="table-wrap rv">
+      <table class="data-table">
+        <thead><tr><th>部品</th><th>役割</th><th class="num">寸法の目安</th></tr></thead>
+        <tbody>
+          <tr><th>状態ボックス</th><td>状態を名詞句で示す</td><td class="num">最小幅 120px</td></tr>
+          <tr><th>状態タイトル</th><td>状態の名前</td><td class="num">本文サイズ・太字</td></tr>
+          <tr><th>注釈</th><td>遷移への補足</td><td class="num">注釈サイズ 13px</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 

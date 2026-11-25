@@ -65,17 +65,54 @@ small, .note { font-size: var(--typography-size-note); color: var(--colors-sub);
 .js .rv { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
 .js .rv.in { opacity: 1; transform: none; }
 
+/* データ表 */
+.table-wrap { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; margin: var(--spacing-s2) 0; }
+.data-table th, .data-table td { border: var(--border-width) solid var(--colors-hairline);
+  padding: var(--spacing-s1) var(--spacing-s2); text-align: left; vertical-align: top; }
+.data-table thead th { border-bottom: 2px solid var(--colors-ink); font-weight: 700; }
+.data-table tbody th { font-weight: 700; }
+.data-table .num { font-variant-numeric: tabular-nums; }
+
 /* 図解部品 */
 .dg { display: flex; align-items: stretch; gap: var(--spacing-s2); flex-wrap: wrap; margin: var(--spacing-s3) 0; }
 .dg .actor { font-weight: 700; align-self: center; }
+.dg .actor small { display: block; font-weight: 400; color: var(--colors-sub);
+  font-size: var(--typography-size-note); }
 .dg .state { border: var(--border-width) solid var(--colors-hairline); background: var(--colors-paper);
   padding: var(--spacing-s2); min-width: 120px; }
-.dg .state small { display: block; }
+.dg .state .st-title { display: block; font-size: var(--typography-body-size); font-weight: 700;
+  line-height: var(--typography-heading-line-height); }
+.dg .state small { display: block; font-size: var(--typography-size-note); color: var(--colors-sub);
+  margin-top: var(--spacing-s1); }
 .dg .arrow { align-self: center; color: var(--colors-ink); }
 .dg .state.emph { background: var(--colors-key); color: var(--colors-key-on); font-weight: 700; }
 .dg .state.emph small { color: var(--colors-key-on); }
+.dg .state.emph .st-title { text-decoration: underline; text-underline-offset: 3px; }
+.dg .state.keyed { border: 2px solid var(--colors-key); }
+.dg .state.heavy { border: 2px solid var(--colors-ink); }
 .dg .callout { border: var(--border-width) dashed var(--colors-sub); color: var(--colors-sub);
   padding: var(--spacing-s1) var(--spacing-s2); font-size: var(--typography-size-note); align-self: center; }
+.dg .annotation { border: var(--border-width) dashed var(--colors-sub); color: var(--colors-sub);
+  padding: var(--spacing-s1) var(--spacing-s2); font-size: var(--typography-size-note);
+  flex-basis: 100%; margin-left: calc(120px + var(--spacing-s2)); }
+.dg-title { font-size: var(--typography-size-h3); font-weight: 900;
+  line-height: var(--typography-heading-line-height); margin: 0 0 var(--spacing-s2); }
+.dg-title .dg-sub { font-size: var(--typography-size-note); font-weight: 400; color: var(--colors-sub); }
+
+/* 図解の並置比較（2段の対比） */
+.dg-compare { display: grid; gap: var(--spacing-s3); margin: var(--spacing-s3) 0; }
+.dg-row { display: grid; grid-template-columns: 9em 1fr; gap: var(--spacing-s3); align-items: start; }
+.dg-row + .dg-row { border-top: var(--border-width) solid var(--colors-hairline);
+  padding-top: var(--spacing-s3); }
+.dg-cond { font-weight: 700; padding-top: var(--spacing-s2); }
+.dg-cond small { display: block; font-weight: 400; color: var(--colors-sub);
+  font-size: var(--typography-size-note); margin-top: 2px; }
+.dg-row .dg { margin: 0; }
+@media (max-width: 720px) {
+  .dg-row { grid-template-columns: 1fr; }
+  .dg .annotation { margin-left: 0; }
+}
 
 /* コピーボタン等 */
 button.copy { border: var(--border-width) solid var(--colors-hairline); background: var(--colors-paper);
