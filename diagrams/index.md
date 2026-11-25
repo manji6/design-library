@@ -39,6 +39,7 @@
 | 伝えたいこと（問い） | 素材の手がかり | 必須の役割 | パターン | 似ているが違うもの | status |
 |---|---|---|---|---|---|
 | 前と後で何が変わったか | 導入前後、ビフォーアフター |  | before-after | state-transition / 並置比較 | name-only |
+| 2つの対象を同じ観点で並べるとどう違うか | 「比べて」「違いは」「使い分け」、方式・製品・体制の対比 | 対象、観点、差分 | [two-way-contrast](patterns/compare/two-way-contrast.md) | contrast-table（3つ以上、表が主役）、state-transition / 並置比較（流れを見せる） | example |
 | 選択肢を同じ観点で並べるとどう違うか | 比較表、プラン、候補 |  | contrast-table | matrix-2axis | name-only |
 | 2つの軸で位置づけるとどこに来るか | 軸、象限、マッピング |  | matrix-2axis | positioning | name-only |
 | 両極の間のどこに位置するか | 連続、グラデーション、程度 |  | spectrum | matrix-2axis | name-only |
