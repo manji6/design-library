@@ -14,6 +14,18 @@ body {
   letter-spacing: var(--typography-body-letter-spacing);
 }
 main { max-width: 880px; margin: 0 auto; padding: 0 var(--spacing-s3) var(--spacing-s5); }
+
+/* レイアウト型: ワイド（長文用。目次サイドバー＋本文のグリッド） */
+.page-wide { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px) var(--spacing-s5); }
+.page-wide main { max-width: none; margin: 0; padding: 0; }
+.cols { display: grid; grid-template-columns: 210px 1fr; gap: clamp(20px, 3vw, 48px); align-items: start; }
+.toc-side { position: sticky; top: var(--spacing-s3); border-bottom: none; padding-top: var(--spacing-s5); }
+.toc-side a { display: block; margin: 0 0 var(--spacing-s1); }
+@media (max-width: 860px) {
+  .cols { grid-template-columns: 1fr; }
+  .toc-side { position: static; padding-top: var(--spacing-s2); }
+  .toc-side a { display: inline; margin-right: var(--spacing-s2); }
+}
 p { max-width: var(--typography-line-length); }
 a { color: var(--colors-key-text); }
 h1, h2, h3 { line-height: var(--typography-heading-line-height); font-feature-settings: "palt"; }
@@ -128,5 +140,6 @@ button.copy { border: var(--border-width) solid var(--colors-hairline); backgrou
 @media print {
   .progress, .toc, .ticker { display: none; }
   .js .rv { opacity: 1; transform: none; }
-  main { max-width: none; }
+  main, .page-wide { max-width: none; }
+  .cols { grid-template-columns: 1fr; }
 }
