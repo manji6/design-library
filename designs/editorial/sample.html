@@ -9,8 +9,8 @@
 </head>
 <body>
 <div class="progress" id="progress"></div>
-<main>
-  <div class="folio"><span>design-library / designs / editorial</span><span>sample</span></div>
+<div class="page-wide">
+  <div class="folio"><span>design-library / designs / editorial</span><span>sample（ワイド型）</span></div>
 
   <header class="masthead">
     <h1>エディトリアル見本</h1>
@@ -22,10 +22,12 @@
 
   <div class="ticker"><b>見出し</b>　ティッカーは見出し級の項目がある資料だけに置く　／　面の朱は #E05729、文字の朱は #BA4F2C</div>
 
-  <nav class="toc" id="toc">
+  <div class="cols">
+  <nav class="toc toc-side" id="toc">
     <a href="#c1">1 組版</a><a href="#c2">2 図解部品</a><a href="#c3">3 スタイルガイド</a>
   </nav>
 
+  <main>
   <section class="chapter" id="c1">
     <span class="no">01</span>
     <h2>組版</h2>
@@ -104,7 +106,9 @@
       <p>本文 16px、行間 1.85、字間 0.02em。見出しは palt 有効。</p>
       <p class="note">注釈 13px、補助色。</p></div>
   </section>
-</main>
+  </main>
+  </div>
+</div>
 <script>
 document.documentElement.classList.add('js');
 const bar = document.getElementById('progress');
