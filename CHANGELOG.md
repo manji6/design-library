@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## [0.2.0] - 2026-11-25
+
+試運転（Antigravity CLI、EmDash 資料ページ）で見つかった仕組みの穴を受けたブラッシュアップ。
+
+- editorial.css に図解部品の完成形を追加: 状態タイトル（本文サイズ・太字）、補足の寸法、並置比較（dg-compare／dg-row／dg-cond）、段の下の注釈（annotation）、キーカラー太枠（keyed）／ink 太枠（heavy）、図の見出し（dg-title）
+- editorial.css にデータ表（data-table）を正式部品として追加
+- sample.html に並置比較とデータ表の実例を追加
+- DESIGN.md の図解部品表に「寸法の目安」の列と注目（太枠）の行、データ表の寸法を追加
+- 様式ファイルの扱いを明記（AGENTS.md、snippets/reference.md）: デザインの CSS は改変しない、追加は別ブロック、部品が無い場合は発明せず不足として報告する
+- 改善バックログを Issue 化（#10 本対応、#11 本対応、#12 図解選択の偏りは検討として分離）
+
 ## [0.1.1] - 2026-11-25
 
 - quality.md を追加: 全デザイン共通の生成ルールと検査（第1層 Floor／Reflex／Finish、第2層 検査）。動きは既定でAIの裁量とし、厳密な定義はデザイン側の層2にだけ書く方針を明記
