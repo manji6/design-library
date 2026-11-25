@@ -1,0 +1,51 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: DESIGN.md lint
+        run: |
+          for f in designs/*/DESIGN.md; do
+            npx -y @google/design.md@0.3.0 lint "$f"
+          done
+      - name: Repository checks
+        run: bash scripts/check.sh
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm i -D playwright >/dev/null
+          npx playwright install --with-deps chromium
+      - name: Screenshots
+        run: |
+          cat > shot.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const targets = ['designs/editorial/sample.html', 'index.html'];
+          const browser = await chromium.launch();
+          for (const width of [375, 768, 1280]) {
+            const page = await browser.newPage({ viewport: { width, height: 900 } });
+            const errors = [];
+            page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+            page.on('pageerror', e => errors.push(String(e)));
+            for (const t of targets) {
+              await page.goto('file://' + process.cwd() + '/' + t);
+              const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+              if (overflow) throw new Error('horizontal overflow: ' + t + ' @' + width);
+            }
+            if (errors.length) throw new Error('console errors: ' + errors.join('; '));
+            await page.close();
+          }
+          await browser.close();
+          console.log('screenshots OK');
+          EOF
+          node shot.mjs
