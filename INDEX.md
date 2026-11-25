@@ -1,4 +1,4 @@
-版: v0.1.0
+版: v0.1.1
 
 # INDEX — エージェント入口
 
@@ -36,9 +36,11 @@ status の意味（デザイン）:
 
 | 作業 | 読むもの |
 |---|---|
-| Web 資料 | 対象デザインの DESIGN.md、tokens.css、sample.html |
-| スライド・単票 | 対象デザインの DESIGN.md、non-html.md |
+| Web 資料 | 対象デザインの DESIGN.md、tokens.css、sample.html、quality.md |
+| スライド・単票 | 対象デザインの DESIGN.md、non-html.md、quality.md |
 | 図解 | diagrams/README.md、diagrams/index.md、対象パターンのファイル1本。語彙で迷った時だけ diagrams/vocabulary.md。描画の段でのみ対象デザインの DESIGN.md（図解部品表） |
+
+quality.md は全デザイン共通の生成ルールと検査（AIっぽさを出さないため）。Floor は必須、Reflex を外した場合は報告に理由を書く。
 
 ## 読み順
 
