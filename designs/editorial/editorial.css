@@ -12,6 +12,7 @@ body {
   font-size: var(--typography-body-size);
   line-height: var(--typography-body-line-height);
   letter-spacing: var(--typography-body-letter-spacing);
+  line-break: strict;
 }
 main { max-width: 880px; margin: 0 auto; padding: 0 var(--spacing-s3) var(--spacing-s5); }
 
@@ -19,6 +20,7 @@ main { max-width: 880px; margin: 0 auto; padding: 0 var(--spacing-s3) var(--spac
 .page-wide { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px) var(--spacing-s5); }
 .page-wide main { max-width: none; margin: 0; padding: 0; }
 .cols { display: grid; grid-template-columns: 210px 1fr; gap: clamp(20px, 3vw, 48px); align-items: start; }
+.cols > * { min-width: 0; }
 .toc-side { position: sticky; top: var(--spacing-s3); border-bottom: none; padding-top: var(--spacing-s5); }
 .toc-side a { display: block; margin: 0 0 var(--spacing-s1); }
 @media (max-width: 860px) {
@@ -103,8 +105,9 @@ small, .note { font-size: var(--typography-size-note); color: var(--colors-sub);
 .dg .state.emph .st-title { text-decoration: underline; text-underline-offset: 3px; }
 .dg .state.keyed { border: 2px solid var(--colors-key); }
 .dg .state.heavy { border: 2px solid var(--colors-ink); }
-.dg .callout { border: var(--border-width) dashed var(--colors-sub); color: var(--colors-sub);
-  padding: var(--spacing-s1) var(--spacing-s2); font-size: var(--typography-size-note); align-self: center; }
+.callout { border: var(--border-width) dashed var(--colors-sub); color: var(--colors-sub);
+  padding: var(--spacing-s1) var(--spacing-s2); font-size: var(--typography-size-note); }
+.dg .callout { align-self: center; }
 .dg .annotation { border: var(--border-width) dashed var(--colors-sub); color: var(--colors-sub);
   padding: var(--spacing-s1) var(--spacing-s2); font-size: var(--typography-size-note);
   flex-basis: 100%; margin-left: calc(120px + var(--spacing-s2)); }
