@@ -42,7 +42,10 @@ def main() -> int:
     html = target.read_text(encoding="utf-8")
 
     token_colors = hexes((design_dir / "tokens.css").read_text(encoding="utf-8"))
-    css_classes = classes_in_css((design_dir / "editorial.css").read_text(encoding="utf-8"))
+    css_classes = set()
+    for css_file in sorted(design_dir.glob("*.css")):
+        if css_file.name != "tokens.css":
+            css_classes |= classes_in_css(css_file.read_text(encoding="utf-8"))
 
     # ページ固有ブロック（<style data-page ...>）は正規の追加先として除外する
     page_styles = re.findall(r"<style[^>]*data-page[^>]*>(.*?)</style>", html, re.S)

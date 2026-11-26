@@ -1,4 +1,4 @@
-版: v0.4.2
+版: v0.5.0
 
 # INDEX — エージェント入口
 
@@ -29,7 +29,7 @@
 | エディトリアル | editorial | ready | designs/editorial/ |
 | ダークシネマ | dark-cinema | name-only | （台帳のみ） |
 | スイスミニマル | swiss-minimal | name-only | （台帳のみ） |
-| MAGIコア | command-core | name-only | （台帳のみ） |
+| MAGIコア | command-core | draft | designs/command-core/ |
 | 朝刊 | morning-edition | name-only | （台帳のみ。実体は newspaper.amanohashi.date） |
 
 status の意味（デザイン）:
