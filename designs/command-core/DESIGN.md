@@ -82,6 +82,7 @@ tokens:
 - 本文は Noto Sans JP、13.5px、行間 1.7。ラベル、数値、コード、状態表示は IBM Plex Mono（フォールバックは ui-monospace 系）。
 - モノスペースのラベルは小さく（11px 前後）、字間 0.08em で組む。見出しは 19〜24px、表示用の大きな数字は 44px。
 - 数字は tabular-nums で桁を揃える。ダッシュボードの数値は「読む」ものではなく「比べる」ものとして組む。
+- 長い ID や URL でパネルが突き抜けないよう、body に overflow-wrap: anywhere と word-break: normal を入れる。
 
 ## Layout
 

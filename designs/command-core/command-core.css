@@ -10,6 +10,8 @@ body {
   font-family: var(--typography-font-family);
   font-size: var(--typography-body-size);
   line-height: var(--typography-body-line-height);
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 main { max-width: 1180px; margin: 0 auto; padding: var(--spacing-s3) var(--spacing-s2) var(--spacing-s4); }
 h1, h2, h3 { color: var(--colors-ink); }

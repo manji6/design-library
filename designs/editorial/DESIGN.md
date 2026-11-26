@@ -72,7 +72,7 @@ tokens:
 - 書体は Murecho（可変フォント）1ファミリー。和文・欧文・数字を同じ書体で組み、ウェイト軸（本文 400、見出し 700〜900）で階層を作る。
 - 読み込みは Google Fonts（display=swap）。フォールバックは Murecho → Noto Sans JP → Hiragino Kaku Gothic ProN → sans-serif。
 - 本文は 16px、行間 1.85、字間 0.02em 程度、行長は 38em を上限の目安にする。見出しの行間は 1.4。
-- 禁則は line-break: strict。見出しは palt を有効にして詰める。本文では palt を使わない。
+- 禁則は line-break: strict。長い URL や英単語でレイアウトが突き抜けないよう、body に overflow-wrap: anywhere と word-break: normal を併せる（ICS MEDIA「文章の折り返し指定のCSS最新版」の推奨セット）。見出しは palt を有効にして詰める。本文では palt を使わない。
 - 数字の並ぶ場所（統計、カウントアップ）では tabular-nums を効かせる。
 - フォントが当たらなくても組版が崩壊しないよう、行間と余白はフォント非依存に保つ。
 
