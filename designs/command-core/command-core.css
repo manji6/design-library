@@ -1,0 +1,100 @@
+/* command-core.css — MAGIコアの部品・組版・動きの実装。
+   色と寸法は tokens.css の変数だけを使う。 */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--colors-bg);
+  color: var(--colors-body);
+  font-family: var(--typography-font-family);
+  font-size: var(--typography-body-size);
+  line-height: var(--typography-body-line-height);
+}
+main { max-width: 1180px; margin: 0 auto; padding: var(--spacing-s3) var(--spacing-s2) var(--spacing-s4); }
+h1, h2, h3 { color: var(--colors-ink); }
+a { color: var(--colors-key-2); }
+
+/* ドック（上部ナビ帯） */
+.dock { position: sticky; top: 0; z-index: 90; overflow-x: clip;
+  background: color-mix(in srgb, var(--colors-bg) 82%, transparent);
+  backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border-bottom: 2px solid var(--colors-key); }
+.dock-in { max-width: 1180px; margin: 0 auto; min-height: var(--layout-dock-height);
+  display: flex; align-items: center; gap: var(--spacing-s3); padding: 0 var(--spacing-s2); }
+.dock .logo { font-family: var(--typography-mono-family); font-weight: 700; color: var(--colors-ink);
+  letter-spacing: var(--typography-label-letter-spacing); white-space: nowrap; }
+.dock .logo b { color: var(--colors-key); }
+.dock nav { display: flex; gap: var(--spacing-s2); overflow-x: auto; }
+.dock nav a { font-family: var(--typography-mono-family); font-size: var(--typography-size-note);
+  letter-spacing: var(--typography-label-letter-spacing); color: var(--colors-sub);
+  text-decoration: none; white-space: nowrap; padding: var(--spacing-s1) 0; }
+.dock nav a.active { color: var(--colors-key-2); border-bottom: 2px solid var(--colors-key); }
+
+/* パネル */
+.panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-s2); }
+.panel { border: var(--border-width) solid var(--colors-line); background: var(--colors-panel);
+  padding: var(--spacing-s2); position: relative; }
+.panel.strong { background: var(--colors-panel-2); }
+.panel .lbl { font-family: var(--typography-mono-family); font-size: var(--typography-size-note);
+  letter-spacing: var(--typography-label-letter-spacing); color: var(--colors-sub);
+  text-transform: uppercase; margin: 0 0 var(--spacing-s1); }
+.panel h3 { margin: 0 0 var(--spacing-s1); font-size: var(--typography-size-h3); }
+
+/* ステータス行 */
+.status { min-height: 40px; display: flex; align-items: center; gap: var(--spacing-s1);
+  border-bottom: var(--border-width) solid var(--colors-line); padding: var(--spacing-s1) 0; }
+.status:last-child { border-bottom: none; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--colors-dim); flex: none; }
+.dot.ok { background: var(--colors-ok); }
+.dot.warn { background: var(--colors-warn); }
+.dot.info { background: var(--colors-info); }
+.dot.error { background: var(--colors-error); }
+.status .name { color: var(--colors-ink); }
+.status .val { margin-left: auto; font-family: var(--typography-mono-family);
+  font-size: var(--typography-size-note); color: var(--colors-sub); font-variant-numeric: tabular-nums; }
+
+/* チップとバッジ */
+.chip { display: inline-block; min-height: 36px; padding: 5px 14px; cursor: pointer;
+  border: var(--border-width) solid var(--colors-line-2); background: var(--colors-inset);
+  color: var(--colors-sub); font-family: var(--typography-mono-family);
+  font-size: var(--typography-size-note); letter-spacing: var(--typography-label-letter-spacing);
+  white-space: nowrap; }
+.chip.active { border-color: var(--colors-key); color: var(--colors-key-2); }
+.badge { display: inline-block; padding: 1px 8px; border: var(--border-width) solid currentColor;
+  font-family: var(--typography-mono-family); font-size: var(--typography-size-note); }
+.badge.ok { color: var(--colors-ok); }
+.badge.warn { color: var(--colors-warn); }
+.badge.error { color: var(--colors-error); }
+.badge.info { color: var(--colors-info); }
+
+/* KPI */
+.kpi .num { font-family: var(--typography-mono-family); font-size: var(--typography-size-display);
+  font-weight: 700; color: var(--colors-ink); font-variant-numeric: tabular-nums; line-height: 1.2; }
+.kpi .num.ok { color: var(--colors-ok); }
+.kpi .num.warn { color: var(--colors-warn); }
+.kpi .num.error { color: var(--colors-error); }
+
+/* 合議パネル（MAGI） */
+.magi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-s2); }
+.magi-unit { border: var(--border-width) solid var(--colors-line-2); background: var(--colors-inset);
+  padding: var(--spacing-s2); text-align: center; }
+.magi-unit .uname { font-family: var(--typography-mono-family); color: var(--colors-ink);
+  letter-spacing: var(--typography-label-letter-spacing); }
+.magi-unit .ustate { font-family: var(--typography-mono-family); font-size: var(--typography-size-note); }
+.magi-unit .ustate.ok { color: var(--colors-ok); }
+.magi-unit .ustate.warn { color: var(--colors-warn); }
+.magi-unit .ustate.error { color: var(--colors-error); }
+@media (max-width: 700px) { .magi-grid { grid-template-columns: 1fr; } }
+
+/* 動き（状態を知らせるためだけ） */
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.dot.live { animation: pulse 2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .dot.live { animation: none; }
+}
+
+@media print {
+  .dock { position: static; }
+  body { background: #fff; }
+}

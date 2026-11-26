@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## [0.5.0] - 2026-11-26
+
+2件目のデザインとして、MAGIコア（command-core）を既存デザインの取り込みで登録した（Issue #29、本人の決定）。
+
+- designs/command-core/ を新設: 運用中の Muse ダッシュボード（MUSE CORE）の実物から色・書体・部品を抽出して DESIGN.md 化。状態色（ok / warn / info / error）を意味グループ（層2）として定義し、ドック、パネル、ステータス行、チップ、KPI、合議パネルを部品化。tokens.css、command-core.css、sample.html、notes.md、non-html.md を同梱
+- status は draft: 図解部品と「面色と対の文字色」は実物に無いため「未定」として宣言表に残した
+- 公式 lint（@google/design.md）でエラー0・警告0、repo 検査と適合チェック（sample）を通過
+- scripts/check-output.py の不具合を修正: デザインの CSS ファイル名を editorial.css 決め打ちにしていたため、他デザインで動かなかった。デザイン dir 内の CSS を読む形に変更
+- Pages トップに command-core の sample へのリンクを追加
+
 ## [0.4.2] - 2026-11-26
 
 - 「定義の範囲と自律判断」に、細部への姿勢を追記: デザインは細部に宿る。「遊び」は手を抜く幅ではなく意図を汲んで判断する幅であり、自律判断で組む部分こそ、余白のリズム、罫線の使い分け、文字の階層、行長といった細部まで、定義済み部分と同じ水準に拘る（INDEX、quality.md の Finish、スニペット、入口スキルへ反映）
