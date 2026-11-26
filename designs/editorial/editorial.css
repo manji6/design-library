@@ -13,6 +13,8 @@ body {
   line-height: var(--typography-body-line-height);
   letter-spacing: var(--typography-body-letter-spacing);
   line-break: strict;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 main { max-width: 880px; margin: 0 auto; padding: 0 var(--spacing-s3) var(--spacing-s5); }
 

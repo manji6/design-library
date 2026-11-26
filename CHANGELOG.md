@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [0.5.1] - 2026-11-27
+
+- 両デザインの body に overflow-wrap: anywhere と word-break: normal を追加した。長い URL や英単語がレイアウト（特に表のセルやパネル）を突き抜けるのを防ぐ。ICS MEDIA「文章の折り返し指定のCSS最新版」（https://ics.media/entry/240411/ ）の推奨セットに倣ったもので、editorial には v0.4.1 で入れた line-break: strict と合わせて3点がそろった。DESIGN.md の Typography にも明記
+
 ## [0.5.0] - 2026-11-26
 
 2件目のデザインとして、MAGIコア（command-core）を既存デザインの取り込みで登録した（Issue #29、本人の決定）。
