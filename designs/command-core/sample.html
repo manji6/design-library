@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAGIコア — sample</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="command-core.css">
+</head>
+<body>
+<header class="dock">
+  <div class="dock-in">
+    <span class="logo"><b>◆</b> SAMPLE CORE</span>
+    <nav>
+      <a href="#" class="active">状態</a><a href="#">プロジェクト</a><a href="#">記録</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="panels">
+    <section class="panel kpi">
+      <p class="lbl">稼働中のプロジェクト</p>
+      <div class="num">4</div>
+      <p>うち要対応 <span class="badge warn">1</span></p>
+    </section>
+    <section class="panel kpi">
+      <p class="lbl">本日のチェック</p>
+      <div class="num ok">12</div>
+      <p>すべて正常に完了</p>
+    </section>
+    <section class="panel">
+      <p class="lbl">サービス状態</p>
+      <div class="status"><span class="dot ok live"></span><span class="name">ダッシュボード更新</span><span class="val">OK 07:00</span></div>
+      <div class="status"><span class="dot warn"></span><span class="name">バックアップ</span><span class="val">注意 03:12</span></div>
+      <div class="status"><span class="dot info"></span><span class="name">次回メンテナンス</span><span class="val">日曜 04:00</span></div>
+    </section>
+  </div>
+
+  <section class="panel strong" style="margin-top:16px">
+    <p class="lbl">合議 — MAGI</p>
+    <div class="magi-grid">
+      <div class="magi-unit"><div class="uname">UNIT-1</div><div class="ustate ok">承認</div></div>
+      <div class="magi-unit"><div class="uname">UNIT-2</div><div class="ustate ok">承認</div></div>
+      <div class="magi-unit"><div class="uname">UNIT-3</div><div class="ustate warn">条件付き</div></div>
+    </div>
+    <p>合議結果: <span class="badge warn">条件付きで進行可</span>　条件の詳細は本文側で管理する。</p>
+    <p>
+      <span class="chip active">すべて</span>
+      <span class="chip">要対応のみ</span>
+      <span class="chip">正常のみ</span>
+    </p>
+  </section>
+</main>
+</body>
+</html>
